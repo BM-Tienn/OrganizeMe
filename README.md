@@ -1,5 +1,5 @@
-## git clone https://github.com/BM-Tienn/OrganizeMe.git
-## cd organizeme
+## git clone https://github.com/BM-Tienn/organize-me.git
+## cd organize-me
 ## docker-compose up -d
 ## docker ps 
 ## docker exec -it {containerID} /bin/sh
