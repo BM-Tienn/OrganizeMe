@@ -7,74 +7,39 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        @extends('layouts.css')
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Styles -->
+        @livewireStyles
     </head>
-    <body class="hold-transition layout-top-nav ">
-        <div class="wrapper">
-            <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
-                <div class="container">
-                    <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+    <body class="font-sans antialiased">
+        <x-banner />
 
-                    <div class="collapse navbar-collapse order-3" id="navbarCollapse">
-                        <!-- Left navbar links -->
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="" class="nav-link">Trang chủ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Videos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Trang cá nhân</a>
-                            </li>
-                        </ul>
+        <div class="min-h-screen bg-gray-100">
+            @livewire('navigation-menu')
+
+            <!-- Page Heading -->
+            @if (isset($header))
+                <header class="bg-white shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
                     </div>
+                </header>
+            @endif
 
-                    <!-- Right navbar links -->
-                    <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                                <i class="fas fa-search"></i>
-                            </a>
-                            <div class="navbar-search-block">
-                                <form class="form-inline">
-                                    <div class="input-group input-group-sm">
-                                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-navbar" type="submit">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                            <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" id="dark-mode-toggle" class="nav-link">
-                                <i class="fas fa-moon"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-
-            <div class="content-wrapper">
-                @yield('content')
-            </div>
-
-            @stack('modals')
+            <!-- Page Content -->
+            <main>
+                {{ $slot }}
+            </main>
         </div>
-        
-        @extends('layouts.script')
+
+        @stack('modals')
+
+        @livewireScripts
     </body>
 </html>
-
