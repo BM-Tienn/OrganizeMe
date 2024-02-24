@@ -7,12 +7,10 @@
 ## chmod -R 775 bootstrap/cache
 ## composer config --global process-timeout 2000
 ## rm -rf ~/.composer/cache/*
-## composer update
+## composer install
 ## cp .env.example .env
 ## php artisan key:generate
 ## php artisan migrate
 ## npm install
-## npm update
 ## npm run build
-## npm run dev
 
